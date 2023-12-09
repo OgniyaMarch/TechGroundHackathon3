@@ -3,9 +3,7 @@ package com.example.EVeteranBot.service;
 public enum BotFunctionality {
 
     REGISTRATION_USER("register"),
-    //   UPDATE("updateInfo"),
     ASK_QUESTION("services");
-//    SHOW_POPULAR_QUESTIONS("popularQuestions");
 
 
 

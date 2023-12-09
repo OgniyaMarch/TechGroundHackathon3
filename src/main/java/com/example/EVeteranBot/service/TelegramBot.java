@@ -1,4 +1,5 @@
 package com.example.EVeteranBot.service;
+import com.example.EVeteranBot.bd.MongoDBClient;
 import com.example.EVeteranBot.config.BotConfig;
 import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
@@ -38,7 +39,7 @@ public class TelegramBot extends TelegramLongPollingBot {
 
     @Override
     public void onUpdateReceived(Update update) {
-        System.out.println(service);
+
         if (update.hasMessage() && update.getMessage().hasText()) {
             String messageText = update.getMessage().getText();
             long chatId = update.getMessage().getChatId();
@@ -117,17 +118,70 @@ public class TelegramBot extends TelegramLongPollingBot {
     private User createUser(long chatId, List<String> userInfo) {
         User user = new User();
         user.setChatID(chatId);
-        user.setPhoneNumber(Integer.parseInt(userInfo.get(RegistrationQuestions.PHONE_NUMBER.ordinal())));
+        user.setPhoneNumber(userInfo.get(RegistrationQuestions.PHONE_NUMBER.ordinal()));
         user.setSurname(userInfo.get(RegistrationQuestions.SURNAME.ordinal()));
         user.setName(userInfo.get(RegistrationQuestions.NAME.ordinal()));
         user.setFatherName(userInfo.get(RegistrationQuestions.FATHER_NAME.ordinal()));
         user.setBirthDate(userInfo.get(RegistrationQuestions.BIRTH_DATE.ordinal()));
-        user.setRegion(String.valueOf(userInfo.get(RegistrationQuestions.REGION.ordinal()).charAt(1)));
-        user.setCategoryOfUser(userInfo.get(RegistrationQuestions.CATEGORY.ordinal()));
+        if(String.valueOf(userInfo.get(RegistrationQuestions.REGION.ordinal())).equals("/Krym")){
+            user.setRegion("657367f5997f0a6e91d4deba");
+        }else if(String.valueOf(userInfo.get(RegistrationQuestions.REGION.ordinal())).equals("/Vinnytska")){
+            user.setRegion("65736b22997f0a6e91d4decb");
+        }else if(String.valueOf(userInfo.get(RegistrationQuestions.REGION.ordinal())).equals("/Volynska")){
+            user.setRegion("65736b34997f0a6e91d4decc");
+        }else if(String.valueOf(userInfo.get(RegistrationQuestions.REGION.ordinal())).equals("/Dnipropetrovska")){
+            user.setRegion("65736b63997f0a6e91d4decd");
+        }else if(String.valueOf(userInfo.get(RegistrationQuestions.REGION.ordinal())).equals("/Donetska")){
+            user.setRegion("65736b71997f0a6e91d4dece");
+        }else if(String.valueOf(userInfo.get(RegistrationQuestions.REGION.ordinal())).equals("/Zakarpatska")){
+            user.setRegion("65736b94997f0a6e91d4ded0");
+        }else if(String.valueOf(userInfo.get(RegistrationQuestions.REGION.ordinal())).equals("/Zhytomyrska")){
+            user.setRegion("65736b7f997f0a6e91d4decf");
+        }else if(String.valueOf(userInfo.get(RegistrationQuestions.REGION.ordinal())).equals("/Zaporizka")){
+            user.setRegion("65736ba3997f0a6e91d4ded1");
+        }else if(String.valueOf(userInfo.get(RegistrationQuestions.REGION.ordinal())).equals("/IvanoFrankivska")){
+            user.setRegion("65736bb2997f0a6e91d4ded2");
+        }else if(String.valueOf(userInfo.get(RegistrationQuestions.REGION.ordinal())).equals("/Kyivska")){
+            user.setRegion("65736bbd997f0a6e91d4ded3");
+        }else if(String.valueOf(userInfo.get(RegistrationQuestions.REGION.ordinal())).equals("/Kirovohradska")){
+            user.setRegion("65736bcb997f0a6e91d4ded4");
+        }else if(String.valueOf(userInfo.get(RegistrationQuestions.REGION.ordinal())).equals("/Luhanska")){
+            user.setRegion("65736bd7997f0a6e91d4ded5");
+        }else if(String.valueOf(userInfo.get(RegistrationQuestions.REGION.ordinal())).equals("/Lvivska")){
+            user.setRegion("65736be4997f0a6e91d4ded6");
+        }else if(String.valueOf(userInfo.get(RegistrationQuestions.REGION.ordinal())).equals("/Mykolaivska")){
+            user.setRegion("65736bf0997f0a6e91d4ded7");
+        }else if(String.valueOf(userInfo.get(RegistrationQuestions.REGION.ordinal())).equals("/Odeska")){
+            user.setRegion("65736bfa997f0a6e91d4ded8");
+        }else if(String.valueOf(userInfo.get(RegistrationQuestions.REGION.ordinal())).equals("/Poltavska")){
+            user.setRegion("65736c06997f0a6e91d4ded9");
+        }else if(String.valueOf(userInfo.get(RegistrationQuestions.REGION.ordinal())).equals("/Rivnenska")){
+            user.setRegion("65736c12997f0a6e91d4deda");
+        }else if(String.valueOf(userInfo.get(RegistrationQuestions.REGION.ordinal())).equals("/Sumska")){
+            user.setRegion("65736c23997f0a6e91d4dedb");
+        }else if(String.valueOf(userInfo.get(RegistrationQuestions.REGION.ordinal())).equals("/Ternopilska")){
+            user.setRegion("65736c34997f0a6e91d4dedc");
+        }else if(String.valueOf(userInfo.get(RegistrationQuestions.REGION.ordinal())).equals("/Kharkivska")){
+            user.setRegion("65736c3f997f0a6e91d4dedd");
+        }else if(String.valueOf(userInfo.get(RegistrationQuestions.REGION.ordinal())).equals("/Khersonska")){
+            user.setRegion("65736c4d997f0a6e91d4dede");
+        }else if(String.valueOf(userInfo.get(RegistrationQuestions.REGION.ordinal())).equals("/Khmelnytska")){
+            user.setRegion("65736bcb997f0a6e91d4ded4");
+        }else if(String.valueOf(userInfo.get(RegistrationQuestions.REGION.ordinal())).equals("/Cherkaska")){
+            user.setRegion("65736c6b997f0a6e91d4dee0");
+        }else if(String.valueOf(userInfo.get(RegistrationQuestions.REGION.ordinal())).equals("/Chernivetska")){
+            user.setRegion("65736c79997f0a6e91d4dee1");
+        }else if(String.valueOf(userInfo.get(RegistrationQuestions.REGION.ordinal())).equals("/Chernihivska")){
+            user.setRegion("65736c85997f0a6e91d4dee2");
+        }
 
-        //     MongoDBClient client = new MongoDBClient(user);
 
+        user.setCategoryOfUser(String.valueOf(userInfo.get(RegistrationQuestions.CATEGORY.ordinal()).charAt(1)));
         System.out.println(user);
+
+        MongoDBClient client = new MongoDBClient(user);
+
+
         return user;
     }
 

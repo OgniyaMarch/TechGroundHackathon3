@@ -8,16 +8,16 @@ public enum RegistrationQuestions {
     BIRTH_DATE(4,"Дата народження: "),
     REGION(5,"Область проживання: \n" +
             "/Krym\n" +
-            "/Vinnytska \n" +
-            "/Volynska \n" +
-            "/Dnipropetrovska \n" +
-            "/Donetska \n" +
+            "/Vinnytska\n" +
+            "/Volynska\n" +
+            "/Dnipropetrovska\n" +
+            "/Donetska\n" +
             "/Zakarpatska \n" +
-            "/Zhytomyrska \n" +
-            "/Zaporizka \n" +
-            "/IvanoFrankivska \n" +
-            "/Kyivska \n" +
-            "/Kirovohradska \n" +
+            "/Zhytomyrska\n" +
+            "/Zaporizka\n" +
+            "/IvanoFrankivska\n" +
+            "/Kyivska\n" +
+            "/Kirovohradska\n" +
             "/Luhanska\n" +
             "/Lvivska\n" +
             "/Mykolaivska\n" +
